@@ -1,0 +1,90 @@
+"""
+**Task 1: Testing basic features of GHCP**
+Your Task
+Paste the following buggy function and ask Copilot to explain and fix it
+
+def caluclate_average(numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total / len(number)
+
+
+Bonus: 
+Explain how the current implementation behaves when the input list is empty and suggest an improved function
+
+---------------------------------------------------------------------------------------------------------------------
+**Task 2: Testing GHCP Chat Extensions**
+Your Task: 
+Provide the following database schema and ask the @MermaidChart extension to create an Entity Relationship diagram
+
+{
+  "database": "ecommerce_platform",
+  "version": "1.0",
+  "tables": [
+    {
+      "name": "users",
+      "description": "Stores basic user profile information.",
+      "columns": [
+        { "name": "id", "type": "INT", "primary_key": true, "auto_increment": true },
+        { "name": "name", "type": "VARCHAR(100)", "nullable": false },
+        { "name": "email", "type": "VARCHAR(150)", "nullable": false, "unique": true },
+        { "name": "age", "type": "INT", "nullable": true },
+        { "name": "gender", "type": "ENUM('Male', 'Female', 'Other')", "nullable": true },
+        { "name": "created_at", "type": "TIMESTAMP", "default": "CURRENT_TIMESTAMP" }
+      ],
+      "indexes": ["email"]
+    },
+    {
+      "name": "orders",
+      "description": "Captures user orders.",
+      "columns": [
+        { "name": "id", "type": "INT", "primary_key": true, "auto_increment": true },
+        { "name": "user_id", "type": "INT", "nullable": false },
+        { "name": "total", "type": "DECIMAL(10, 2)", "nullable": false },
+        { "name": "status", "type": "VARCHAR(20)", "default": "'pending'" },
+        { "name": "order_date", "type": "DATE", "nullable": false }
+      ],
+      "foreign_keys": [
+        {
+          "column": "user_id",
+          "references": { "table": "users", "column": "id" },
+          "on_delete": "CASCADE"
+        }
+      ]
+    },
+    {
+      "name": "order_items",
+      "description": "Details of individual products within an order.",
+      "columns": [
+        { "name": "id", "type": "INT", "primary_key": true, "auto_increment": true },
+        { "name": "order_id", "type": "INT", "nullable": false },
+        { "name": "product_id", "type": "INT", "nullable": false },
+        { "name": "quantity", "type": "INT", "nullable": false },
+        { "name": "price", "type": "DECIMAL(10, 2)", "nullable": false }
+      ],
+      "foreign_keys": [
+        {
+          "column": "order_id",
+          "references": { "table": "orders", "column": "id" },
+          "on_delete": "CASCADE"
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "description": "Product catalog information.",
+      "columns": [
+        { "name": "id", "type": "INT", "primary_key": true, "auto_increment": true },
+        { "name": "name", "type": "VARCHAR(100)", "nullable": false },
+        { "name": "description", "type": "TEXT", "nullable": true },
+        { "name": "price", "type": "DECIMAL(10, 2)", "nullable": false },
+        { "name": "in_stock", "type": "BOOLEAN", "default": true }
+      ]
+    }
+  ]
+}
+
+Bonus: use GHCP to generate a sql query to create the above database and let it create a separate file for that.
+(this will use mssql in the background)
+"""

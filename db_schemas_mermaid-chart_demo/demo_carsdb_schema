@@ -1,0 +1,80 @@
+{
+  "tables": {
+    "car_info": {
+      "columns": {
+        "car_id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "brand_id": "INTEGER",
+        "owner_id": "INTEGER",
+        "dealer_id": "INTEGER",
+        "model": "TEXT",
+        "year": "INTEGER",
+        "condition": "TEXT",
+        "mileage": "INTEGER",
+        "fuel_type": "TEXT",
+        "transmission": "TEXT",
+        "color": "TEXT",
+        "created_at": "DATETIME DEFAULT CURRENT_TIMESTAMP"
+      },
+      "foreign_keys": {
+        "brand_id": "REFERENCES brand(brand_id)",
+        "owner_id": "REFERENCES owner(owner_id)",
+        "dealer_id": "REFERENCES dealer(dealer_id)"
+      }
+    },
+    "brand": {
+      "columns": {
+        "brand_id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "brand_name": "TEXT UNIQUE",
+        "country": "TEXT",
+        "founded_year": "INTEGER"
+      }
+    },
+    "owner": {
+      "columns": {
+        "owner_id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "first_name": "TEXT",
+        "last_name": "TEXT",
+        "email": "TEXT UNIQUE",
+        "phone_number": "TEXT",
+        "address": "TEXT",
+        "created_at": "DATETIME DEFAULT CURRENT_TIMESTAMP"
+      }
+    },
+    "service_history": {
+      "columns": {
+        "service_id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "car_id": "INTEGER",
+        "service_date": "DATE",
+        "service_type": "TEXT",
+        "service_center": "TEXT",
+        "notes": "TEXT"
+      },
+      "foreign_keys": {
+        "car_id": "REFERENCES car_info(car_id)"
+      }
+    },
+    "dealer": {
+      "columns": {
+        "dealer_id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "dealer_name": "TEXT",
+        "location": "TEXT",
+        "phone_number": "TEXT",
+        "email": "TEXT UNIQUE"
+      }
+    },
+    "sales": {
+      "columns": {
+        "sale_id": "INTEGER PRIMARY KEY AUTOINCREMENT",
+        "car_id": "INTEGER",
+        "buyer_id": "INTEGER",
+        "dealer_id": "INTEGER",
+        "sale_date": "DATE"
+      },
+      "foreign_keys": {
+        "car_id": "REFERENCES car_info(car_id)",
+        "buyer_id": "REFERENCES owner(owner_id)",
+        "dealer_id": "REFERENCES dealer(dealer_id)"
+      }
+    }
+  }
+}

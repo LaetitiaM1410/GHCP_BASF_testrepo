@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "brand": "Toyota",
+    "condition": "Good",
+    "year": 2019
+  },
+  {
+    "id": 2,
+    "brand": "BMW",
+    "condition": "Bad",
+    "year": 1999
+  },
+  {
+    "id": 3,
+    "brand": "Volkswagen",
+    "condition": "Bad",
+    "year": 2011
+  },
+  {
+    "id": 4,
+    "brand": "Tesla",
+    "condition": "Good",
+    "year": 2023
+  },
+  {
+    "id": 5,
+    "brand": "Mercedes",
+    "condition": "Good",
+    "year": 2022
+  }
+]
