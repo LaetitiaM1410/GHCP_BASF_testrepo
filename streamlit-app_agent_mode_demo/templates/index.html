@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half Marathon - Race Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: url('https://source.unsplash.com/1600x400/?marathon,running') no-repeat center center/cover;
+            padding: 50px;
+            position: relative;
+            background-color: #ff9800; /* Added colorful background color */
+        }
+
+        .header h1 {
+            background: rgba(0, 0, 0, 0.6);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .details {
+            background: #1e1e1e;
+            padding: 10px;
+            font-size: 18px;
+            margin-top: -10px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #242424;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            font-weight: bold;
+        }
+
+        .pagination {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+            display: inline-block;
+        }
+
+        .pagination a:hover {
+            background: #444;
+        }
+
+        .pagination select {
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+
+        .pagination select option {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Half Marathon - Race Details</h1>
+    </div>
+
+    <div class="details">
+        <p>Date: 10/20/2024 &nbsp; | &nbsp; Distance: 21.1 km &nbsp; | &nbsp; Location: Location 26</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Place</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Time</th>
+        </tr>
+        {% for runner in runners %}
+        <tr>
+            <td>{{ runner.id }}</td>
+            <td>{{ runner.name }}</td>
+            <td>{{ runner.age }}</td>
+            <td>{{ runner.time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page-1) }}">Previous</a>
+        {% endif %}
+        Page {{ page }} of {{ total_pages }}
+        {% if page < total_pages %}
+            <a href="{{ url_for('index', page=page+1) }}">Next</a>
+        {% endif %}
+    </div>
+
+</body>
+</html>
