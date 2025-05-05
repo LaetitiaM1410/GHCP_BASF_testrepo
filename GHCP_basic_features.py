@@ -19,7 +19,7 @@ class CarInventory:
         return [car for car in self.cars if car.brand.lower() == brand.lower()]  # Fixed typo
 
     def get_cars_by_year(self, year):
-        return [car for car in self.cars if car.year == year]  # Fixed typo
+        return [car for car in self.car if car.year == year]  # Fixed typo
 
     def get_cars_by_color(self, color):
         return [car for car in self.cars if car.color.lower() == color.lower()]
